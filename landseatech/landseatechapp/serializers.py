@@ -45,3 +45,10 @@ class ProductimageSerializer(serializers.ModelSerializer):
             pdt_img = Image.objects.create(img_id=pdt_obj,small=i['small'],big=i['big'],medium=i['medium'])
             pdt_img.save()
     
+# class ImageSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Image
+#         fields = '__all__'   abnaaa
+
+
+
