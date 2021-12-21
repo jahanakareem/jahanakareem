@@ -5,8 +5,9 @@ from django.db import models
 
 class Brand(models.Model):
     brand_name = models.CharField(max_length=100)
-    created_by = models.DateTimeField(auto_now=True)
-    updated_by = models.DateTimeField(auto_now=True)
+    brand_image = models.FileField(upload_to='images/',null=True,blank=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
     class Meta:
         ordering = ['id']
     
@@ -16,8 +17,9 @@ class Brand(models.Model):
 class Category(models.Model):
     cat_name = models.CharField(max_length=100)
     cat_type = models.CharField(max_length=100)
-    created_by = models.DateTimeField(auto_now=True)
-    updated_by = models.DateTimeField(auto_now=True)
+    cat_desc = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
     
     class Meta:
         ordering = ['id']
@@ -29,10 +31,10 @@ class Product(models.Model):
     product_name = models.CharField(max_length=100)
     category = models.ForeignKey(Category,on_delete=models.CASCADE,null=True)
     brand = models.ForeignKey(Brand,on_delete=models.CASCADE,null=True)
-    desc = models.CharField(max_length=500)
+    desc = models.TextField()
     title_img = models.FileField(upload_to='images/',null=True,blank=True)
-    created_by = models.DateTimeField(auto_now=True)
-    updated_by = models.DateTimeField(auto_now=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
     
     class Meta:
         ordering=['id']
@@ -41,17 +43,17 @@ class Product(models.Model):
         return self.product_name
 
 class Image(models.Model):
-    img_id = models.ForeignKey(Product,on_delete=models.CASCADE)
+    pdt_id = models.ForeignKey(Product,related_name='images',on_delete=models.CASCADE)
     small = models.FileField(upload_to='images/',null=True,blank=True)
     big = models.FileField(upload_to='images1/',null=True,blank=True)
     medium = models.FileField(upload_to='images2/',null=True,blank=True)
-    created_by = models.DateTimeField(auto_now=True)
-    updated_by = models.DateTimeField(auto_now=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering=['id']
     
     def __str__(self):
-        return str(self.img_id)
+        return str(self.pdt_id)
 
 
