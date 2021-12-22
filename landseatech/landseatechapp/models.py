@@ -28,6 +28,7 @@ class Category(models.Model):
         return self.cat_name
 
 class Product(models.Model):
+    
     product_name = models.CharField(max_length=100)
     category = models.ForeignKey(Category,on_delete=models.CASCADE,null=True)
     brand = models.ForeignKey(Brand,on_delete=models.CASCADE,null=True)
