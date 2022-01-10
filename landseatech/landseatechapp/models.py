@@ -6,6 +6,7 @@ from django.db import models
 class Brand(models.Model):
     brand_name = models.CharField(max_length=100)
     brand_image = models.FileField(upload_to='images/',null=True,blank=True)
+    desc = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     class Meta:
