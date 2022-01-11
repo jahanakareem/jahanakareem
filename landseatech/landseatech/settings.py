@@ -132,9 +132,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'landseatech',
-        'USER': 'moonwhite',
-        'PASSWORD': 'moonwhite',
-        'HOST': '127.0.0.1',
+        'USER': 'phpmyadmin',
+        'PASSWORD': 'Landsea@2015',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
